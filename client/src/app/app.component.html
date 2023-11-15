@@ -1,0 +1,54 @@
+
+
+
+ <div class="flex">
+  <div class="img">  <img  width="700px" src="../assets/—Pngtree—father with his son shopping_6969597.png" alt=""> </div>
+  <div class="main" style="margin-top:20px">
+    <div class="flextitle">
+     <h3   style="text-align: left;" class="flextitle"> <img src="../assets/download.png " style="width:70px ; height: 70px;" alt=""> <span  class="header" style="padding-top: 30px;">{{"Grocery List Application"}}</span>  </h3>
+     <h3> <mat-icon style="margin-right: 25px;" >add_alert</mat-icon> <mat-icon style="margin-right: 25px;" (click)="downloadJSON()">save_alt</mat-icon> <mat-icon  (click)="copyToClipboard()" style="margin-right: 25px;"> filter_none</mat-icon>  <mat-icon (click)="clearTodo()" style="margin-right: 25px;">clear</mat-icon> <mat-icon matBadge={{count}} matBadgeColor="warn">add_shopping_cart</mat-icon> </h3>
+    </div>
+     <div *ngIf="error">
+       <p>Error: {{ error }}</p>
+     </div>
+ 
+     <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="form">
+       <mat-form-field  style="min-width: 70% !important;" >
+         <input matInput type="text"  style="min-width: 300px !important;" placeholder="Enter item" formControlName="name" />
+       </mat-form-field>
+       <br />
+       <mat-form-field   style="min-width: 70% !important;" >
+         <input matInput type="text"  style="min-width: 300px !important;"  placeholder="Enter Description" formControlName="description" />
+       </mat-form-field>
+       <br />
+      <div class="flexx">
+        <mat-form-field  style="min-width: 400px !important;"  >
+          <input matInput type="number"  style="min-width: 300px !important;"  placeholder="Enter quantity" formControlName="quantity" />
+        </mat-form-field>
+       
+        <button mat-raised-button color="primary"  style="margin-left: 5px;" [disabled]="todoForm.invalid"><mat-icon>add</mat-icon> </button>
+      </div>
+     </form>
+   
+     <div class="todo-container "  style="padding-left: 90px !important;"  *ngIf="todos">
+       <ul class="flex " style="min-width: 70% !important;">
+         <li  *ngFor="let todo of todos"  >
+           <div class="todo flex">
+             <span class="todo-name">{{ todo.name }}</span>
+             <span class="todo-description">{{ todo.quantity }}</span>
+             <span class="todo-description">{{ todo.description }}</span>
+             <span  style="margin-left: auto;">  <mat-icon  color="warn" (click)="deleteTodo(todo.id)">delete</mat-icon></span>
+           </div>
+         
+         </li>
+       </ul>
+     </div>
+ 
+   </div>
+ </div>
+  
+
+
+   
+   <!-- <button (click)="toggleTheme()">Toggle Theme</button>
+   <h1>hey adish</h1> -->
