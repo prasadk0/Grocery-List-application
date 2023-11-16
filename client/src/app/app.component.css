@@ -145,5 +145,29 @@ border: none;
   --background-color-dark: var(--dark-primary);
   --text-color-dark: var(--dark-accent);
 }
+#pot {
+  /* bottom: 15%; */
+  margin-top: 30px;
+  position: absolute;
+  animation: run 10s linear infinite;
+}
 
- 
+@keyframes run {
+  0% {
+    left: 0;
+  }
+  48% {
+    transform: rotateY(0deg); 
+  }
+  50% { 
+    left: calc(100% - 100px);
+    transform: rotateY(180deg); 
+  }
+  98% {
+    transform: rotateY(180deg); 
+  }
+  100% {
+    left: 0;    
+    transform: rotateY(0deg);
+  }
+}

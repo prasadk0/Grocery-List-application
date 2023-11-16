@@ -2,13 +2,73 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { ADD_TODO, DELETE_TODO, GET_TODOS } from '../graphql/graphql.queries';
-
+import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
+import dayGridPlugin from '@fullcalendar/daygrid';
+// import {  EventInput } from '@fullcalendar/core';
+import { EventInput } from '@fullcalendar/core';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
+  
+  event:EventInput[] =[
+//     {title:'',date:'2023-11-16',color:''}
+     
+
+
+// , 
+// {title: 'kjhgf', date: '2023-10-10', color: ''}
+  ]
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin],
+    events:this.event,
+    
+  };
+
+  // onDateClick(info: any='0'): void {
+  //   console.log("sdfghjkl")
+  //   const title = prompt('Enter event title:');
+  //   if (title) {
+  //     const event = {
+  //       title,
+  //       date:'2023-10-10',
+  //       color:'#0000FF',
+       
+        
+  //     };
+  //     // this.calendarService.addEvent(event);
+  //     this.event.push(event);
+  //     var  a=this.event;
+  //     this.event =a;
+  //     console.log(this.event)
+  //   // events = this.calendarService.getCalendarOptions();
+  //   }
+  // }
+  onDateClick(info: any = '0'): void {
+    console.log("sdfghjkl");
+    const title = prompt('Enter event title:');
+      const date = String(prompt('Enter event date:'));
+    if (title) {
+      const newEvent: EventInput = {
+        title,
+      
+        color: '#0000FF',
+        date
+      };
+      this.event.push(newEvent);
+    
+      this.calendarOptions.events=[newEvent];
+      console.log(this.event,date);
+    }
+  }
+  
+
+
+
+  
   todos: any[] = [];
   error: any;
 

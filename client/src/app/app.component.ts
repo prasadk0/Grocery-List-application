@@ -5,12 +5,14 @@ import { Apollo } from 'apollo-angular';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ADD_TODO,CLEAR_TODO,DELETE_TODO,GET_TODOS } from './graphql/graphql.queries';
 import { ThemeService } from './theme.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+ 
   // panelOpenState = false;
   downloadUrl:string='';
   title = 'angular-graphql';
@@ -133,6 +135,8 @@ export class AppComponent {
     }).valueChanges.subscribe(({ data, error }: any) => {
       this.todos = data.lists;
       this.error = error;
+      this.count=this.todos.length;
+      // console.log(this.todos.length)
   }
   );
   }

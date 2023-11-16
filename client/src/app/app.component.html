@@ -1,13 +1,16 @@
 
-
+<div>
+  <router-outlet></router-outlet>
+</div>
 
  <div class="flex">
   <div class="img">  <img  width="700px" src="../assets/—Pngtree—father with his son shopping_6969597.png" alt=""> </div>
   <div class="main" style="margin-top:20px">
     <div class="flextitle">
      <h3   style="text-align: left;" class="flextitle"> <img src="../assets/download.png " style="width:70px ; height: 70px;" alt=""> <span  class="header" style="padding-top: 30px;">{{"Grocery List Application"}}</span>  </h3>
-     <h3> <mat-icon style="margin-right: 25px;" >add_alert</mat-icon> <mat-icon style="margin-right: 25px;" (click)="downloadJSON()">save_alt</mat-icon> <mat-icon  (click)="copyToClipboard()" style="margin-right: 25px;"> filter_none</mat-icon>  <mat-icon (click)="clearTodo()" style="margin-right: 25px;">clear</mat-icon> <mat-icon matBadge={{count}} matBadgeColor="warn">add_shopping_cart</mat-icon> </h3>
+     <h3> <mat-icon routerLink="calender"  style="margin-right: 25px;" >calendar_today</mat-icon> <mat-icon style="margin-right: 25px;" (click)="downloadJSON()">save_alt</mat-icon> <mat-icon  (click)="copyToClipboard()" style="margin-right: 25px;"> filter_none</mat-icon>  <mat-icon (click)="clearTodo()" style="margin-right: 25px;">clear</mat-icon> <mat-icon matBadge={{count}} matBadgeColor="warn">add_shopping_cart</mat-icon> </h3>
     </div>
+   
      <div *ngIf="error">
        <p>Error: {{ error }}</p>
      </div>
@@ -32,21 +35,24 @@
    
      <div class="todo-container "  style="padding-left: 90px !important;"  *ngIf="todos">
        <ul class="flex " style="min-width: 70% !important;">
+       
          <li  *ngFor="let todo of todos"  >
            <div class="todo flex">
              <span class="todo-name">{{ todo.name }}</span>
              <span class="todo-description">{{ todo.quantity }}</span>
              <span class="todo-description">{{ todo.description }}</span>
-             <span  style="margin-left: auto;">  <mat-icon  color="warn" (click)="deleteTodo(todo.id)">delete</mat-icon></span>
+             <span  style="margin-left: auto;">  <mat-icon  color="warn" (click)="deleteTodo(todo.id)">	done_outline</mat-icon></span>
            </div>
          
          </li>
        </ul>
      </div>
- 
+     <div id="pot">
+      <img src="../assets/—Pngtree—free vector shopping cart realistic_9139718.png" width=200px height=200px>
+    </div> 
    </div>
  </div>
-  
+
 
 
    
